@@ -1,0 +1,29 @@
+<div class="option">
+  <div class="left">
+    <div class="top">
+      <label>输入一组数据：</label>
+      <input class="input" [(ngModel)]="input">
+    </div>
+    <div class="bottom">
+      <label>选择一种排序算法：</label>
+      <select class="method" [(ngModel)]="sortMethod">
+        <option value="0" selected="selected">冒泡排序法</option>
+        <option value="1">选择排序法</option>
+        <option value="2">插入排序法</option>
+        <option value="3">快速排序法</option>
+      </select>
+      <input class='confirm' type="button" value="确定" (click)="confirmInput()">
+    </div>
+  </div>
+  <div class="right">
+    <div class="control"><label style="margin-left:10px;">时间间隔：</label><input class="output"><label>s</label></div>
+    <div class="control">
+      <label style="margin-left:10px; margin-right:30px;">步数：</label>
+      <input class="output" [value]="sortViewData.whichStep">
+    </div>
+    <div class="control">
+      <input class="confirm" type="button" value="自动开始" (click)="autoSort()">
+      <input class="confirm" type="button" value="手动下一步" (click)="sort()">
+    </div>
+  </div>
+</div>

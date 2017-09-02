@@ -4,10 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { ViewComponentComponent } from './view-component/view-component.component';
+import { OptionComponentComponent } from './option-component/option-component.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ViewComponentComponent,
+    OptionComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -15,6 +19,10 @@ import { AppComponent } from './app.component';
     HttpModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent,
+    OptionComponentComponent,
+    ViewComponentComponent,
+  ]
 })
 export class AppModule { }

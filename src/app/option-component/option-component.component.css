@@ -1,0 +1,41 @@
+.option{
+    width: 600px;
+    height: 200px;
+    border: 2px solid black;
+}
+.left{
+    width: 400px;
+    height: 100%;
+    float: left;
+    font-size: 18px;
+    border-right: 2px solid black;
+}
+.left .top{
+    margin-left: 20px;
+    height: 100px;
+    line-height: 100px;
+}
+.left .bottom{
+    margin-left: 20px;
+    height: 80px;
+    line-height: 80px;
+}
+.input{
+    width: 200px;
+}
+.method{
+    width: 100px;
+}
+.confirm{
+    margin-left: 10px;
+}
+.right{
+    padding-top: 20px;
+}
+.control{
+    margin:20px 10px;
+}
+.output{
+    width: 50px;
+    margin-right:5px;
+}

@@ -1,0 +1,6 @@
+<div class="view">
+  <div class="element" *ngFor="let number of sortViewData.inputArr">
+    <div class="number">{{number}}<div>
+    <div class="column" [style.height.px]="getHeight(number)" [class.selected1]="number===sortViewData.inputArr[sortViewData.index1]" [class.selected2]="number===sortViewData.inputArr[sortViewData.index2]"></div>
+  </div>
+</div>

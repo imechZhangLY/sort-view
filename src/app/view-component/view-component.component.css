@@ -1,0 +1,28 @@
+.view{
+    display: flex;
+    width: 500px;
+    height: 400px;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 0px 50px 0px 50px;
+    flex-direction: row;
+    align-items: flex-end;
+}
+.element{
+    width: 30px;
+}
+.column{
+    background-color: blue;
+    border: 1px solid black;
+    height: 100%;
+}
+.selected1{
+    background-color: red;
+}
+.selected2{
+    background-color: yellow;
+}
+.number{
+    text-align: center;
+}
