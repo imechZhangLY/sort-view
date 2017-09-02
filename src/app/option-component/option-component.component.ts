@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SortViewService } from 'app/sort-view.service';
 import { SortViewData } from 'app/sort-view-data';
+import { Sort } from './sort-class';
 
 @Component({
   selector: 'app-option',
@@ -9,27 +10,37 @@ import { SortViewData } from 'app/sort-view-data';
   providers: [SortViewService]
 })
 export class OptionComponentComponent implements OnInit {
+  input: string;
+  sortMethod: string = 'bubbleSort';
+  interval: number = 2;
+  sortObj: Sort;
 
   constructor(private sortViewService: SortViewService) {
     this.sortViewData = sortViewService.getData();
+    this.sortObj = new Sort(0,this.sortViewData.index1,this.sortViewData.index2,this.sortViewData.inputArr)
    }
   sortViewData: SortViewData;
 
-  input: string;
-  sortMethod: string = '0';
-  interval: number = 2;
 
    //把输入的数据传入
   confirmInput(): void{
+    let arr
+    if(this.input){
+      this.sortViewData.inputArr = [];
+      arr = this.input.split(',');
+      arr.forEach(function(element){
+        self.sortViewData.inputArr.push(+element);
+      })
+    }
     this.sortViewData.whichStep = 0;
-    this.sortViewData.inputArr = [];
+    this.sortViewData.index1 = 1;
+    this.sortViewData.index2 = 0;
     const self = this;
-    let arr = this.input.split(',');
-    arr.forEach(function(element){
-      self.sortViewData.inputArr.push(+element);
-    })
     console.log(arr);
+    this.sortObj = new Sort(0,this.sortViewData.index1,this.sortViewData.index2,this.sortViewData.inputArr)
   } 
+
+
 
   //判断数组是否已排好序
   isSorted(): boolean {
@@ -41,43 +52,12 @@ export class OptionComponentComponent implements OnInit {
     return true;
   }
 
-  //冒泡排序法
-  bubbleSort(): void {
-
-  }
-
-  //选择排序法
-  slectionSort(): void {
-    
-  }
   //手动排序
   sort(): void {
-    let i = this.sortViewData.whichStep;
-    let j = 0;
-    let arr = this.sortViewData.inputArr;
-    let index1 = this.sortViewData.index1;
-    let index2 = this.sortViewData.index2;
-    let n = arr.length;
-    let temp;
-
-    if(index2 >= n - j){
-      this.sortViewData.index1 = 0;
-      this.sortViewData.index2 = 1;
-      index1 = 0;
-      index2 = 0;
-      return;
-    }
-    
-    if(arr[index2] < arr[index1]){
-      temp = arr[index2];
-      arr[index2] = arr[index1];
-      arr[index1] = temp;                                
-    }
-    console.log(index2);
+    this.sortObj[this.sortMethod]();
     this.sortViewData.whichStep += 1;
-    this.sortViewData.index1 += 1;
-    this.sortViewData.index2 += 1;
-    j += 1;
+    this.sortViewData.index1 = this.sortObj.index1;
+    this.sortViewData.index2 = this.sortObj.index2;
   }
 
 //自动排序
