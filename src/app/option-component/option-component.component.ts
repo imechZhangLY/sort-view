@@ -24,7 +24,8 @@ export class OptionComponentComponent implements OnInit {
 
    //把输入的数据传入
   confirmInput(): void{
-    let arr
+    let arr;
+    const self = this;
     if(this.input){
       this.sortViewData.inputArr = [];
       arr = this.input.split(',');
@@ -35,7 +36,6 @@ export class OptionComponentComponent implements OnInit {
     this.sortViewData.whichStep = 0;
     this.sortViewData.index1 = 1;
     this.sortViewData.index2 = 0;
-    const self = this;
     console.log(arr);
     this.sortObj = new Sort(0,this.sortViewData.index1,this.sortViewData.index2,this.sortViewData.inputArr)
   } 
